@@ -1,20 +1,5 @@
-# :shopping: Inventory tracker
+Internship Module 1 - Assignment: # :shopping: Inventory tracker
 
-A Streamlit app showing how to use `st.data_editor` to read and modify a database. Behind the scenes
-this uses a simple SQLite database, but you can easily replace it with whatever your favorite DB is.
-
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://inventory-tracker-template.streamlit.app/)
-
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+- Instructed to make a Inventory Tracking application using any framework or programming language I was comfortable with.
+- Used Python 3.11 & Streamlit
+- This program is modified from original source code provided by Streamlit
