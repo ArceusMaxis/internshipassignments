@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title='M.SWAMIRAJ SON DEALER',
+    page_title='Home - Petrol Bunk',
     page_icon=':pray:', 
 )
 
