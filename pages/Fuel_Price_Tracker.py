@@ -43,16 +43,8 @@ def fetch_py_diesel_price():
         return None
 
 def main():
-    tn,py = st.columns(2)
-
     st.title("Fuel Price Tracker")
-    st.markdown("""
-    <style>
-    .big-font {
-        font-size:300px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    tn,py = st.columns(2)
 
     tn_petrol_price = fetch_tn_petrol_price()
     tn_diesel_price = fetch_tn_diesel_price()
@@ -63,31 +55,21 @@ def main():
         st.header("Tamil Nadu Prices",divider='green')
         st.write(f"Petrol Price:")
         tn_pp = st.empty()
-        tn_pp.write(f"{tn_petrol_price}")
+        tn_pp.write(f"# {tn_petrol_price}")
         st.divider()
         st.write(f"Diesel Price:")
         tn_pp = st.empty()
-        tn_pp.write(f"{tn_diesel_price}")
+        tn_pp.write(f"# {tn_diesel_price}")
 
     with py:
         st.header("Puducherry Prices",divider='green')
         st.write(f"Petrol Price:")
         tn_pp = st.empty()
-        tn_pp.write(f"{py_petrol_price}")
+        tn_pp.write(f"# {py_petrol_price}")
         st.divider()
         st.write(f"Diesel Price:")
         tn_pp = st.empty()
-        tn_pp.write(f"{py_diesel_price}")
-
-    if tn_petrol_price:
-        st.write(f"Today's Petrol Price in Chennai: {tn_petrol_price}")
-    else:
-        st.error("Failed to fetch petrol price. Please try again later.")
-    
-    if tn_diesel_price:
-        st.write(f"Today's Diesel Price in Chennai: {tn_diesel_price}")
-    else:
-        st.error("Failed to fetch petrol price. Please try again later.")
+        tn_pp.write(f"# {py_diesel_price}")
 
 if __name__ == "__main__":
     main()
