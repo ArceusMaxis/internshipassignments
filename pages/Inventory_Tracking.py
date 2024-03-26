@@ -141,7 +141,7 @@ def update_data(conn, df, changes):
 This page reads and writes directly from/to the inventory database.
 '''
 
-st.subheader('Inventory Database', divider='red')
+st.subheader('Inventory Database', divider='blue')
 
 conn, db_was_just_created = connect_db()
 
