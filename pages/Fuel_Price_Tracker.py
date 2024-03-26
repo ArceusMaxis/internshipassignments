@@ -53,23 +53,19 @@ def main():
     
     with tn:
         st.header("Tamil Nadu Prices",divider='green')
-        st.write(f"Petrol Price:")
-        tn_pp = st.empty()
-        tn_pp.write(f"# ₹{tn_petrol_price}")
+        st.write(f"## Petrol Price:")
+        st.write(f"# ₹{tn_petrol_price}")
         st.divider()
-        st.write(f"Diesel Price:")
-        tn_pp = st.empty()
-        tn_pp.write(f"# ₹{tn_diesel_price}")
+        st.write(f"## Diesel Price:")
+        st.write(f"# ₹{tn_diesel_price}")
 
     with py:
         st.header("Puducherry Prices",divider='green')
-        st.write(f"Petrol Price:")
-        tn_pp = st.empty()
-        tn_pp.write(f"# ₹{py_petrol_price}")
+        st.write(f"## Petrol Price:")
+        st.write(f"# ₹{py_petrol_price}")
         st.divider()
-        st.write(f"Diesel Price:")
-        tn_pp = st.empty()
-        tn_pp.write(f"# ₹{py_diesel_price}")
+        st.write(f"## Diesel Price:")
+        st.write(f"# ₹{py_diesel_price}")
 
 if __name__ == "__main__":
     main()
