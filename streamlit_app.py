@@ -6,13 +6,10 @@ import streamlit as st
 import altair as alt
 import pandas as pd
 
-
-# Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
     page_title='Inventory tracker',
-    page_icon=':shopping_bags:', # This is an emoji shortcode. Could be a URL too.
+    page_icon=':shopping_bags:', 
 )
-
 
 # -----------------------------------------------------------------------------
 # Declare some useful functions.
@@ -168,16 +165,13 @@ def update_data(conn, df, changes):
 
 # Set the title that appears at the top of the page.
 '''
-# :shopping_bags: Inventory tracker
+# Inventory tracker
 
-**Welcome to Alice's Corner Store's intentory tracker!**
-This page reads and writes directly from/to our inventory database.
+**This is a managerial side only application.**
+This page reads and writes directly from/to the inventory database.
 '''
 
-st.info('''
-    Use the table below to add, remove, and edit items.
-    And don't forget to commit your changes when you're done.
-    ''')
+st.subheader('Inventory Database', divider='red')
 
 # Connect to database and create table if needed
 conn, db_was_just_created = connect_db()
@@ -193,12 +187,11 @@ df = load_data(conn)
 # Display data with editable table
 edited_df = st.data_editor(
     df,
-    disabled=['id'], # Don't allow editing the 'id' column.
-    num_rows='dynamic', # Allow appending/deleting rows.
+    disabled=['id'], 
+    num_rows='dynamic', 
     column_config={
-        # Show dollar sign before price columns.
-        "price": st.column_config.NumberColumn(format="$%.2f"),
-        "cost_price": st.column_config.NumberColumn(format="$%.2f"),
+        "price": st.column_config.NumberColumn(format="₹%.2f"),
+        "cost_price": st.column_config.NumberColumn(format="₹%.2f"),
     },
     key='inventory_table')
 
@@ -208,15 +201,10 @@ st.button(
     'Commit changes',
     type='primary',
     disabled=not has_uncommitted_changes,
-    # Update data in database
     on_click=update_data,
     args=(conn, df, st.session_state.inventory_table))
 
 
-# -----------------------------------------------------------------------------
-# Now some cool charts
-
-# Add some space
 ''
 ''
 ''
@@ -228,7 +216,7 @@ need_to_reorder = df[df['units_left'] < df['reorder_point']].loc[:, 'item_name']
 if len(need_to_reorder) > 0:
     items = '\n'.join(f'* {name}' for name in need_to_reorder)
 
-    st.error(f"We're running dangerously low on the items below:\n {items}")
+    st.error(f"Low Stock Items below:\n {items}")
 
 ''
 ''
