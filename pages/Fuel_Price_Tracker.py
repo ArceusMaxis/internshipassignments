@@ -36,7 +36,7 @@ def main():
         st.error("Failed to fetch petrol price. Please try again later.")
     
     if diesel_price:
-        st.write(f"Today's Petrol Price in Chennai: {diesel_price}")
+        st.write(f"Today's Diesel Price in Chennai: {diesel_price}")
     else:
         st.error("Failed to fetch petrol price. Please try again later.")
 
