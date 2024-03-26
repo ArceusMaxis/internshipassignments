@@ -159,11 +159,6 @@ def update_data(conn, df, changes):
 
     conn.commit()
 
-
-# -----------------------------------------------------------------------------
-# Draw the actual page, starting with the inventory table.
-
-# Set the title that appears at the top of the page.
 '''
 # Inventory tracker
 
@@ -173,18 +168,14 @@ This page reads and writes directly from/to the inventory database.
 
 st.subheader('Inventory Database', divider='red')
 
-# Connect to database and create table if needed
 conn, db_was_just_created = connect_db()
 
-# Initialize data.
 if db_was_just_created:
     initialize_data(conn)
     st.toast('Database initialized with some sample data.')
 
-# Load data from database
 df = load_data(conn)
 
-# Display data with editable table
 edited_df = st.data_editor(
     df,
     disabled=['id'], 
@@ -216,13 +207,12 @@ need_to_reorder = df[df['units_left'] < df['reorder_point']].loc[:, 'item_name']
 if len(need_to_reorder) > 0:
     items = '\n'.join(f'* {name}' for name in need_to_reorder)
 
-    st.error(f"Low Stock Items below:\n {items}")
+    st.warning(f"Low Stock Items below:\n {items}")
 
 ''
 ''
 
 st.altair_chart(
-    # Layer 1: Bar chart.
     alt.Chart(df)
         .mark_bar(
             orient='horizontal',
@@ -231,7 +221,6 @@ st.altair_chart(
             x='units_left',
             y='item_name',
         )
-    # Layer 2: Chart showing the reorder point.
     + alt.Chart(df)
         .mark_point(
             shape='diamond',
@@ -247,15 +236,13 @@ st.altair_chart(
     ,
     use_container_width=True)
 
-st.caption('NOTE: The :diamonds: location shows the reorder point.')
+st.caption('NOTE: :diamonds: - reorder points')
 
 ''
 ''
 ''
 
-# -----------------------------------------------------------------------------
-
-st.subheader('Best sellers', divider='orange')
+st.subheader('Best sellers', divider='green')
 
 ''
 ''
